@@ -1,12 +1,15 @@
 const firebase = require('firebase').default
 var firebaseConfig = {
-    apiKey: "AIzaSyBCZI4E7yKxsolLiDW5e3yRpvOSFFc-QwY",
-    authDomain: "appweb-7fa44.firebaseapp.com",
-    databaseURL: "https://appweb-7fa44.firebaseio.com",
-    projectId: "appweb-7fa44",
-    storageBucket: "appweb-7fa44.appspot.com",
-    messagingSenderId: "158096715008",
-    appId: "1:158096715008:web:815b2c41df8c8ad1cdd7e5"
+    apiKey: "AIzaSyBixhKRCi_LBvzUHkZkd7PpfnlrWliosZ4",
+    authDomain: "blood-bank-a7cce.firebaseapp.com",
+    projectId: "blood-bank-a7cce",
+    storageBucket: "blood-bank-a7cce.appspot.com",
+    messagingSenderId: "463210812929",
+    appId: "1:463210812929:web:695b5bde440f5e26c85200",
+    measurementId: "G-JBJCHKX212"
 };
 firebase.initializeApp(firebaseConfig)
-export const  db = firebase.database()
+const googleProvider =  new firebase.auth.GoogleAuthProvider;
+const db = firebase.database()
+const auth = firebase.auth()
+export {db , auth , googleProvider}

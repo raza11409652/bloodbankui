@@ -8,6 +8,7 @@ import Home from "../ui/home/home"
 import Login from "../ui/login/login"
 import Register from "../ui/register/register"
 import ProtectedRoute from "./protected.routes"
+import GetRequested from '../ui/getrequested'
 
 const Routes =()=>{
 
@@ -22,6 +23,7 @@ const Routes =()=>{
             <ProtectedRoute exact path="/dash" component={Dash}></ProtectedRoute>
             <ProtectedRoute exact path="/chat/" component={Chat}></ProtectedRoute>
             <Route exact path="/chat/bot" component={ChatBotUi}/>
+            <ProtectedRoute exact path="/blood/request" component={GetRequested}/>
         </Switch>
         </BrowserRouter>
     </Suspense>

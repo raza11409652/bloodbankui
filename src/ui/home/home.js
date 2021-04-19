@@ -9,9 +9,9 @@ const Home = ()=>{
      <div className="home-wrapper">
          <Navbar/>
          <Banner/> 
-         <div className="flaoting-btn">
+         {/* <div className="flaoting-btn">
              <NavLink to="/chat/bot">Chat now</NavLink>
-         </div>
+         </div> */}
      </div>
     </>
     );

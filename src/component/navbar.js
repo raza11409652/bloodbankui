@@ -41,6 +41,9 @@ const Navbar =()=>{
                    <NavLink to="/dash"   className="nav-link">Dash</NavLink>
                  </li>
                  <li className="navbar-item">
+                   <NavLink to="/blood/request"   className="nav-link">Request</NavLink>
+                 </li>
+                 <li className="navbar-item">
                    <button onClick={logout}  className="btn btn-danger text-white">Logout</button>
                  </li>
                  </>}
