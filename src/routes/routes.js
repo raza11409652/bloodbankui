@@ -9,6 +9,9 @@ import Login from "../ui/login/login"
 import Register from "../ui/register/register"
 import ProtectedRoute from "./protected.routes"
 import GetRequested from '../ui/getrequested'
+import CampSchedule from "../ui/camp/camp.schdule"
+import CampSearch from "../ui/camp/camp.search"
+import About from "../ui/dash/about"
 
 const Routes =()=>{
 
@@ -24,6 +27,9 @@ const Routes =()=>{
             <ProtectedRoute exact path="/chat/" component={Chat}></ProtectedRoute>
             <Route exact path="/chat/bot" component={ChatBotUi}/>
             <ProtectedRoute exact path="/blood/request" component={GetRequested}/>
+            <ProtectedRoute exact path="/camp/sechdule" component={CampSchedule}/>
+            <Route exact path="/camp/search" component={CampSearch}/>
+            <Route exact path="/about" component={About}/>
         </Switch>
         </BrowserRouter>
     </Suspense>

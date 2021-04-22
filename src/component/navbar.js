@@ -29,6 +29,9 @@ const Navbar =()=>{
                  <li className="navbar-item">
                    <NavLink to="/" className="nav-link">Home</NavLink>
                  </li>
+                 <li className="navbar-item">
+                   <NavLink to="/about" className="nav-link">About</NavLink>
+                 </li>
                  {isLoggedIn===null||isLoggedIn===false?<>
                   <li className="navbar-item">
                    <NavLink to="/register" className="nav-link">Register</NavLink>

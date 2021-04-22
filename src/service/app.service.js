@@ -42,4 +42,17 @@ const getRequestedBlood = async ({ token }) => {
         return null
     });
 }
-export { searchBank, requestBloodInit , getRequestedBlood }
+const modifyRequest =  async({formdata , token})=>{
+    return await axios.post(server.markRequest, formdata, {
+        headers: {
+            'auth-token': token
+        }
+    }).then(data => {
+        console.log(data);
+        return data.data
+    }).catch(er => {
+        console.log(er);
+        return null
+    });
+}
+export { searchBank, requestBloodInit , getRequestedBlood , modifyRequest }

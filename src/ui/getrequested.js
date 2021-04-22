@@ -1,15 +1,17 @@
 import { useContext, useEffect, useState } from "react"
+import { useHistory } from "react-router";
 import authcontext from "../context/authcontext";
-import { getRequestedBlood } from "../service/app.service";
+import { getRequestedBlood, modifyRequest } from "../service/app.service";
 
 const { default: Navbar } = require("../component/navbar")
 
 const GetRequested = () => {
-    const {user , setUser} =useContext(authcontext)
+    const { user, setUser } = useContext(authcontext)
     // console.log(user);
     const [isLoaded, setLoaded] = useState(false)
     const [records, setRecords] = useState([])
     const token = localStorage.getItem('_auth_token');
+    const router = useHistory()
     useEffect(() => {
         getRequestedBlood({ token: token }).then(data => {
             // console.log(data);
@@ -23,6 +25,22 @@ const GetRequested = () => {
             console.log(er);
         })
     }, [token])
+    const modifyStatus = (status, id) => {
+
+        const formdatad = {
+            "status": status,
+            "id": id
+        }
+        console.log(formdatad);
+        modifyRequest({ formdata: formdatad, token: token }).then(data => {
+
+            alert(JSON.stringify(data))
+            router.push('/dash')
+        }).catch(er => {
+            // return
+            console.log(er);
+        })
+    }
     return (<>
         <Navbar></Navbar>
 
@@ -42,13 +60,19 @@ const GetRequested = () => {
                         {records.map((data, index) => {
                             console.log(data);
                             return (
-                            <p key={index} className="alert alert-info">
-                                {data.name} Asking for {data?.qty} unit of blood <br></br>
+                                <p key={index} className="alert alert-info">
+                                    {data.name} Asking for {data?.qty} unit of blood <br></br>
                                 Blood group {data?.group}
 
-                                <button className="btn btn-sm btn-yellow">YES</button>
-                            </p>
-                           );
+                                    {data.status === null || data.status === "null" ? <>
+                                        <button className="btn btn-sm btn-danger" onClick={() => {
+                                            modifyStatus("Yes"  , data._id)
+                                        }}>YES</button>
+                                        <button className="btn btn-sm btn-white" onClick={() => {
+                                            modifyStatus("NO" , data._id)
+                                        }}>No</button></> : <>  Accepted Status : {data.status}</>}
+                                </p>
+                            );
                         })}
                     </>
                 }
